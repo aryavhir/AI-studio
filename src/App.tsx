@@ -286,8 +286,8 @@ function App() {
       </section>
 
       {/* Footer - Cinematic Style */}
-      <footer className="relative bg-gradient-to-t from-black via-gray-900/30 to-purple-900 backdrop-blur-lg border-t border-gray-700/30">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-purple-900"></div>
+      <footer className="relative bg-cover bg-center bg-no-repeat border-t border-gray-700/30" style={{ backgroundImage: 'url(/images.jpg)' }}>
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Footer Content */}
           <div className="text-center space-y-8">
