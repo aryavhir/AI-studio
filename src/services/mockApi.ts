@@ -110,7 +110,7 @@ export class RetryableApiService {
     request: GenerateRequest,
     onRetry?: (attempt: number, error: string) => void
   ): Promise<GenerateResponse> {
-    let lastError: Error;
+    let lastError: Error = new Error('Unknown error');
 
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
       try {

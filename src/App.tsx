@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import ImageUpload from './components/ImageUpload';
 import PromptInput from './components/PromptInput';
@@ -8,6 +8,7 @@ import GenerateSection from './components/GenerateSection';
 import HistorySection, { type Generation } from './components/HistorySection';
 import HeroSection from './components/HeroSection';
 import useScrollAnimation from './hooks/useScrollAnimation';
+import { RetryableApiService, type GenerateRequest, type GenerateResponse } from './services/mockApi';
 
 const styleOptions: StyleOption[] = [
   {
@@ -56,6 +57,8 @@ function App() {
   // Generation state
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationError, setGenerationError] = useState<string | null>(null);
+  const [retryAttempt, setRetryAttempt] = useState(0);
+  const apiServiceRef = useRef(RetryableApiService.getInstance());
 
   // History state
   const [history, setHistory] = useState<Generation[]>([]);
@@ -81,45 +84,60 @@ function App() {
     setSelectedGenerationId(undefined); // Clear selection when changing style
   };
 
-  const handleGenerate = () => {
-    // Placeholder for generate functionality
+  const handleGenerate = async () => {
     setIsGenerating(true);
     setGenerationError(null);
+    setRetryAttempt(0);
 
-    // Simulate API call
-    setTimeout(() => {
-      // Simulate random error (20% chance)
-      if (Math.random() < 0.2) {
-        setGenerationError('Model overloaded. Please try again in a moment.');
-        setIsGenerating(false);
-        return;
-      }
+    const request: GenerateRequest = {
+      imageDataUrl: image,
+      prompt: prompt,
+      style: style,
+    };
 
-      // Simulate successful generation
+    try {
+      const response: GenerateResponse = await apiServiceRef.current.generateWithRetry(
+        request,
+        (attempt, error) => {
+          setRetryAttempt(attempt);
+          console.log(`Retry attempt ${attempt}: ${error}`);
+        }
+      );
+
+      // Convert API response to Generation format
       const newGeneration: Generation = {
-        id: Date.now().toString(),
-        imageUrl:
-          'https://via.placeholder.com/400x300/6366f1/ffffff?text=Generated+Image',
-        prompt: prompt,
-        style: style,
-        createdAt: new Date(),
+        id: response.id,
+        imageUrl: response.imageUrl,
+        prompt: response.prompt,
+        style: response.style,
+        createdAt: new Date(response.createdAt),
       };
 
       // Add to history (keep only last 5)
       setHistory((prev) => [newGeneration, ...prev.slice(0, 4)]);
-      setIsGenerating(false);
 
-      // Clear form
+      // Clear form on success
       setImage(null);
       setImageName(null);
       setPrompt('');
       setStyle('');
-    }, 2000);
+
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Generation failed';
+      if (errorMessage !== 'Request aborted') {
+        setGenerationError(errorMessage);
+      }
+    } finally {
+      setIsGenerating(false);
+      setRetryAttempt(0);
+    }
   };
 
   const handleAbort = () => {
+    apiServiceRef.current.abort();
     setIsGenerating(false);
     setGenerationError(null);
+    setRetryAttempt(0);
   };
 
   const handleSelectGeneration = (generation: Generation) => {
@@ -226,6 +244,7 @@ function App() {
                   isGenerating={isGenerating}
                   error={generationError}
                   canGenerate={!!canGenerate}
+                  retryAttempt={retryAttempt}
                 />
               </div>
             </div>
