@@ -19,12 +19,15 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
     <div className="space-y-4">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-pink-400/30">
+          <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-2xl shadow-pink-400/40 group-hover:shadow-pink-400/60 transition-all duration-500">
             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
             </svg>
           </div>
-          <h3 className="text-lg font-bold text-white">Generate</h3>
+          <div>
+            <h3 className="text-2xl font-bold text-white group-hover:text-purple-100 transition-colors duration-300">Generate</h3>
+            <p className="text-sm text-gray-400 font-medium">Create Your Masterpiece</p>
+          </div>
         </div>
         
         {isGenerating && (

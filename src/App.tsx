@@ -243,16 +243,78 @@ function App() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="mt-16 bg-black/60 backdrop-blur-md border-t border-gray-800/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">© 2024 AI Studio Pro - Enterprise AI Generation Platform</p>
-            <div className="flex items-center space-x-4">
-              <span className="text-xs text-gray-600">v2.1.0</span>
-              <div className="flex items-center space-x-1">
-                <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-xs text-gray-600">All systems operational</span>
+      {/* Footer - Cinematic Style */}
+      <footer className="relative mt-24 bg-gradient-to-t from-black via-gray-900/80 to-transparent backdrop-blur-lg border-t border-gradient-to-r from-pink-500/30 via-purple-500/30 to-pink-500/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-transparent to-purple-500/5"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Footer Content */}
+          <div className="grid md:grid-cols-3 gap-12 mb-12">
+            {/* Brand Section */}
+            <div className="space-y-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-pink-500/40">
+                  <span className="text-white font-bold text-lg">AI</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">AI Studio Pro</h3>
+                  <p className="text-sm text-gray-400">Enterprise AI Platform</p>
+                </div>
+              </div>
+              <p className="text-gray-300 leading-relaxed">
+                Professional-grade AI image generation for creators, designers, and enterprises worldwide.
+              </p>
+            </div>
+            
+            {/* Status Section */}
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold text-white">System Status</h4>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between bg-gray-800/50 rounded-xl p-4">
+                  <span className="text-gray-300 font-medium">Platform Status</span>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+                    <span className="text-green-300 font-medium">Operational</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between bg-gray-800/50 rounded-xl p-4">
+                  <span className="text-gray-300 font-medium">API Response</span>
+                  <span className="text-blue-300 font-medium">&lt; 100ms</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Version Info */}
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold text-white">Version Info</h4>
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-gray-300 font-medium">Current Version</span>
+                    <span className="text-pink-300 font-mono font-bold">v2.1.0</span>
+                  </div>
+                  <div className="text-xs text-gray-400">
+                    Latest stable release with enhanced performance
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-700/50 pt-8">
+            <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+              <p className="text-gray-400 text-center md:text-left">
+                © 2024 AI Studio Pro. Enterprise AI Generation Platform. All rights reserved.
+              </p>
+              <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-2 text-sm text-gray-400">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                  <span>Secure & Private</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-gray-400">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                  <span>Enterprise Ready</span>
+                </div>
               </div>
             </div>
           </div>

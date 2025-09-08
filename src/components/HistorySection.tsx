@@ -22,13 +22,16 @@ const HistorySection: React.FC<HistorySectionProps> = ({
   if (history.length === 0) {
     return (
       <div className="space-y-4">
-        <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-pink-400/30">
-            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-2xl shadow-pink-400/40 group-hover:shadow-violet-400/60 transition-all duration-500">
+            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
             </svg>
           </div>
-          <h3 className="text-lg font-bold text-white">Recent Generations</h3>
+          <div>
+            <h3 className="text-2xl font-bold text-white group-hover:text-violet-100 transition-colors duration-300">Recent Generations</h3>
+            <p className="text-sm text-gray-400 font-medium">Your Creative History</p>
+          </div>
         </div>
         <div className="bg-gray-800/30 border-2 border-dashed border-gray-600/50 rounded-2xl p-8 text-center">
           <div className="mx-auto w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-2xl shadow-pink-400/20">
@@ -61,13 +64,16 @@ const HistorySection: React.FC<HistorySectionProps> = ({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-pink-400/30">
-            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-2xl shadow-pink-400/40 group-hover:shadow-violet-400/60 transition-all duration-500">
+            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
             </svg>
           </div>
-          <h3 className="text-lg font-bold text-white">Recent Generations</h3>
+          <div>
+            <h3 className="text-2xl font-bold text-white group-hover:text-violet-100 transition-colors duration-300">Recent Generations</h3>
+            <p className="text-sm text-gray-400 font-medium">Your Creative History</p>
+          </div>
         </div>
         <span className="text-sm font-medium text-gray-300 bg-gray-800/50 px-2 py-1 rounded-full border border-gray-600/30">{history.length}/5</span>
       </div>
