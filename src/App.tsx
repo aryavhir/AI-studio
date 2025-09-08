@@ -165,7 +165,7 @@ function App() {
                 onAbort={handleAbort}
                 isGenerating={isGenerating}
                 error={generationError}
-                canGenerate={canGenerate}
+                canGenerate={!!canGenerate}
               />
             </div>
           </div>
