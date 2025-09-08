@@ -136,13 +136,7 @@ function App() {
       {/* Create Section - Full Length */}
       <section
         id="create-section"
-        className="relative min-h-screen flex items-center justify-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('/images.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        className="relative min-h-screen flex items-center justify-center bg-black"
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           {/* Section Header */}
@@ -237,9 +231,8 @@ function App() {
       {/* History Section - Full Length */}
       <section
         id="history-section"
-        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900/20 via-gray-900 to-black"
+        className="relative min-h-screen flex items-center justify-center bg-black"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-pink-500/5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           {/* Section Header */}
           <div className="text-center mb-16 animate-fadeInUp">
@@ -269,8 +262,8 @@ function App() {
       </section>
 
       {/* Footer - Cinematic Style */}
-      <footer className="relative bg-gradient-to-t from-purple-900 via-pink-900/90 to-purple-800/80 backdrop-blur-lg border-t border-gradient-to-r from-pink-400/50 via-purple-400/50 to-pink-400/50">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-600/20 via-purple-600/15 to-pink-700/20"></div>
+      <footer className="relative bg-gradient-to-t from-black via-gray-900/80 to-gray-800/60 backdrop-blur-lg border-t border-gray-700/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-gray-900/30 to-black/40"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Footer Content */}
           <div className="grid md:grid-cols-3 gap-12 mb-12">
