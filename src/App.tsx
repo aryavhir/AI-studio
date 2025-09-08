@@ -1,88 +1,106 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ImageUpload from './components/ImageUpload';
 import PromptInput from './components/PromptInput';
-import StyleSelector from './components/StyleSelector';
-import GenerateSection from './components/GenerateSection';
+import StyleSelector, { type StyleOption } from './components/StyleSelector';
 import LiveSummary from './components/LiveSummary';
-import HistorySection from './components/HistorySection';
+import GenerateSection from './components/GenerateSection';
+import HistorySection, { type Generation } from './components/HistorySection';
 
-export interface Generation {
-  id: string;
-  imageUrl: string;
-  prompt: string;
-  style: string;
-  timestamp: Date;
-}
-
-export interface StyleOption {
-  id: string;
-  name: string;
-  description: string;
-}
+const styleOptions: StyleOption[] = [
+  {
+    id: 'editorial',
+    name: 'Editorial',
+    description: 'Clean, professional style perfect for magazines and publications'
+  },
+  {
+    id: 'streetwear',
+    name: 'Streetwear', 
+    description: 'Urban, contemporary aesthetic with bold colors and graphics'
+  },
+  {
+    id: 'vintage',
+    name: 'Vintage',
+    description: 'Nostalgic, retro-inspired with classic styling and warm tones'
+  },
+  {
+    id: 'minimalist',
+    name: 'Minimalist',
+    description: 'Simple, clean design with focus on essential elements'
+  },
+  {
+    id: 'artistic',
+    name: 'Artistic',
+    description: 'Creative, expressive style with painterly effects and unique textures'
+  }
+];
 
 function App() {
+  // Form state
   const [image, setImage] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string | null>(null);
   const [prompt, setPrompt] = useState('');
   const [style, setStyle] = useState('');
+  
+  // Generation state
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationError, setGenerationError] = useState<string | null>(null);
+  
+  // History state
   const [history, setHistory] = useState<Generation[]>([]);
-  const [selectedGenerationId, setSelectedGenerationId] = useState<string | null>(null);
+  const [selectedGenerationId, setSelectedGenerationId] = useState<string>();
 
-  const styleOptions: StyleOption[] = [
-    { id: 'editorial', name: 'Editorial', description: 'Clean, professional photography style' },
-    { id: 'streetwear', name: 'Streetwear', description: 'Urban, modern aesthetic' },
-    { id: 'vintage', name: 'Vintage', description: 'Retro, classic film look' },
-    { id: 'minimalist', name: 'Minimalist', description: 'Simple, clean composition' },
-    { id: 'artistic', name: 'Artistic', description: 'Creative, expressive style' }
-  ];
+  // Handlers
+  const handleImageChange = (imageDataUrl: string | null, filename: string | null) => {
+    setImage(imageDataUrl);
+    setImageName(filename);
+    setSelectedGenerationId(undefined); // Clear selection when changing source
+  };
 
-  const handleImageChange = useCallback((newImage: string | null, newImageName: string | null) => {
-    setImage(newImage);
-    setImageName(newImageName);
-    setGenerationError(null);
-  }, []);
-
-  const handlePromptChange = useCallback((newPrompt: string) => {
+  const handlePromptChange = (newPrompt: string) => {
     setPrompt(newPrompt);
-    setGenerationError(null);
-  }, []);
+    setSelectedGenerationId(undefined); // Clear selection when changing prompt
+  };
 
-  const handleStyleChange = useCallback((newStyle: string) => {
+  const handleStyleChange = (newStyle: string) => {
     setStyle(newStyle);
-    setGenerationError(null);
-  }, []);
+    setSelectedGenerationId(undefined); // Clear selection when changing style
+  };
 
-  const handleGenerate = useCallback(async () => {
-    if ((!image && !prompt.trim()) || !style) {
-      setGenerationError('Please provide either an image or prompt, and select a style');
-      return;
-    }
-
+  const handleGenerate = () => {
+    // Placeholder for generate functionality
     setIsGenerating(true);
     setGenerationError(null);
-
-    try {
-      await new Promise(resolve => setTimeout(resolve, 3000));
-
-      const mockImageUrl = `https://picsum.photos/512/512?random=${Date.now()}`;
+    
+    // Simulate API call
+    setTimeout(() => {
+      // Simulate random error (20% chance)
+      if (Math.random() < 0.2) {
+        setGenerationError('Model overloaded. Please try again in a moment.');
+        setIsGenerating(false);
+        return;
+      }
+      
+      // Simulate successful generation
       const newGeneration: Generation = {
-        id: Math.random().toString(36).substr(2, 9),
-        imageUrl: mockImageUrl,
-        prompt: prompt || 'Generated from uploaded image',
-        style,
-        timestamp: new Date()
+        id: Date.now().toString(),
+        imageUrl: 'https://via.placeholder.com/400x300/6366f1/ffffff?text=Generated+Image',
+        prompt: prompt,
+        style: style,
+        createdAt: new Date()
       };
-
+      
+      // Add to history (keep only last 5)
       setHistory(prev => [newGeneration, ...prev.slice(0, 4)]);
       setIsGenerating(false);
-    } catch (error) {
-      setGenerationError('Failed to generate image. Please try again.');
-      setIsGenerating(false);
-    }
-  }, [image, prompt, style]);
+      
+      // Clear form
+      setImage(null);
+      setImageName(null);
+      setPrompt('');
+      setStyle('');
+    }, 2000);
+  };
 
   const handleAbort = () => {
     setIsGenerating(false);
@@ -91,12 +109,15 @@ function App() {
 
   const handleSelectGeneration = (generation: Generation) => {
     setSelectedGenerationId(generation.id);
+    // Restore the generation parameters
     setPrompt(generation.prompt);
     setStyle(generation.style);
+    // Note: We can't restore the original image from history in this demo
     setImage(null);
     setImageName(null);
   };
 
+  // Determine if we can generate
   const canGenerate = (image || prompt.trim()) && style;
 
   return (
@@ -125,84 +146,68 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="relative">
-          {/* Floating Background Elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute top-40 right-20 w-24 h-24 bg-purple-500/10 rounded-full blur-xl animate-pulse animation-delay-300"></div>
-            <div className="absolute bottom-40 left-1/3 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl animate-pulse animation-delay-150"></div>
-            <div className="absolute top-60 right-1/3 w-28 h-28 bg-cyan-500/8 rounded-full blur-2xl animate-pulse animation-delay-150"></div>
-            <div className="absolute bottom-20 right-10 w-36 h-36 bg-purple-600/6 rounded-full blur-3xl animate-pulse"></div>
+        <div className="grid lg:grid-cols-3 gap-8 animate-fadeInUp">
+          {/* Left Column - Inputs */}
+          <div className="space-y-6 animate-slideInLeft">
+            <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
+              <div className="flex items-center space-x-2 mb-6">
+                <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full shadow-lg shadow-pink-400/30"></div>
+                <h2 className="text-lg font-bold text-white">Create</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <ImageUpload
+                  onImageChange={handleImageChange}
+                  currentImage={image}
+                />
+                
+                <PromptInput
+                  value={prompt}
+                  onChange={handlePromptChange}
+                />
+                
+                <StyleSelector
+                  value={style}
+                  onChange={handleStyleChange}
+                  options={styleOptions}
+                />
+              </div>
+            </div>
+
+            <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
+              <GenerateSection
+                onGenerate={handleGenerate}
+                onAbort={handleAbort}
+                isGenerating={isGenerating}
+                error={generationError}
+                canGenerate={!!canGenerate}
+              />
+            </div>
           </div>
 
-          <div className="relative grid lg:grid-cols-12 gap-6 animate-fadeInUp">
-            {/* Left Column - Inputs */}
-            <div className="lg:col-span-4 space-y-6 animate-slideInLeft">
-              <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/30 hover:shadow-2xl transition-all duration-500 hover:border-pink-500/50 hover:scale-[1.02] transform animate-float">
-                <div className="flex items-center space-x-2 mb-6">
-                  <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full shadow-lg shadow-pink-400/50 animate-pulse-glow"></div>
-                  <h2 className="text-lg font-bold text-white">Create</h2>
-                  <div className="flex space-x-1 ml-auto">
-                    <div className="w-2 h-2 bg-pink-400 rounded-full animate-ping"></div>
-                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-ping animation-delay-150"></div>
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-ping animation-delay-300"></div>
-                  </div>
-                </div>
-              
-                <div className="space-y-6">
-                  <ImageUpload
-                    onImageChange={handleImageChange}
-                    currentImage={image}
-                  />
-                  
-                  <PromptInput
-                    value={prompt}
-                    onChange={handlePromptChange}
-                  />
-                  
-                  <StyleSelector
-                    value={style}
-                    onChange={handleStyleChange}
-                    options={styleOptions}
-                  />
-                </div>
-              </div>
-
-              <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-purple-500/30 hover:shadow-2xl transition-all duration-500 hover:border-purple-500/50 hover:scale-[1.02] transform">
-                <GenerateSection
-                  onGenerate={handleGenerate}
-                  onAbort={handleAbort}
-                  isGenerating={isGenerating}
-                  error={generationError}
-                  canGenerate={!!canGenerate}
+          {/* Middle Column - Preview */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24">
+              <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
+                <LiveSummary
+                  image={image}
+                  imageName={imageName}
+                  prompt={prompt}
+                  style={style}
+                  styleOptions={styleOptions}
                 />
               </div>
             </div>
+          </div>
 
-            {/* Middle Column - Preview */}
-            <div className="lg:col-span-4 lg:mt-12">
-              <div className="sticky top-32">
-                <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 hover:shadow-blue-500/30 hover:shadow-2xl transition-all duration-500 hover:border-blue-500/50 hover:scale-[1.02] transform animate-bounce-glow">
-                  <LiveSummary
-                    image={image}
-                    imageName={imageName}
-                    prompt={prompt}
-                    style={style}
-                    styleOptions={styleOptions}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - History */}
-            <div className="lg:col-span-4 lg:mt-6 animate-slideInLeft animation-delay-300">
-              <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 sticky top-28 hover:shadow-cyan-500/30 hover:shadow-2xl transition-all duration-500 hover:border-cyan-500/50 hover:scale-[1.02] transform animate-float animation-delay-150">
-                <HistorySection
-                  history={history}
-                  onSelectGeneration={handleSelectGeneration}
-                  selectedId={selectedGenerationId}
-                />
-              </div>
+          {/* Right Column - History */}
+          <div className="lg:col-span-1 animate-slideInLeft animation-delay-300">
+            <div className="bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/30 p-6 sticky top-24 hover:shadow-pink-500/10 hover:shadow-2xl transition-all duration-300">
+              <HistorySection
+                history={history}
+                onSelectGeneration={handleSelectGeneration}
+                selectedId={selectedGenerationId}
+              />
             </div>
           </div>
         </div>
