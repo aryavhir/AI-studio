@@ -30,7 +30,8 @@ const PromptInput: React.FC<PromptInputProps> = ({
           placeholder={placeholder}
           maxLength={maxLength}
           rows={4}
-          className="w-full px-3 py-2 bg-gray-800 border-none rounded-lg resize-none focus:outline-none focus:ring-0 focus:border-none text-gray-200 placeholder-gray-400"
+          className="w-full px-3 py-2 border-none rounded-lg resize-none focus:outline-none focus:ring-0 focus:border-none text-gray-200 placeholder-gray-400"
+          style={{ backgroundColor: 'rgb(21, 21, 21)' }}
           aria-describedby="prompt-counter"
         />
 
