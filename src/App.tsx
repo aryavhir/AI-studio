@@ -157,7 +157,7 @@ function App() {
           <div>
             {/* Left Column - Create Tools */}
             <div className="space-y-8 animate-slideInLeft">
-              <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 p-8">
+              <div className="bg-black/80 backdrop-blur-sm rounded-2xl shadow-xl border border-purple-900/30 p-8">
                 <div className="flex items-center space-x-3 mb-8">
                   <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-2xl shadow-pink-400/40 group-hover:shadow-pink-400/60 transition-all duration-500">
                     <div className="w-full h-full flex items-center justify-center">
@@ -201,7 +201,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 p-8">
+              <div className="bg-black/80 backdrop-blur-sm rounded-2xl shadow-xl border border-purple-900/30 p-8">
                 <GenerateSection
                   onGenerate={handleGenerate}
                   onAbort={handleAbort}
@@ -214,7 +214,7 @@ function App() {
 
             {/* Right Column - Live Preview */}
             <div className="animate-slideInRight">
-              <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50">
+              <div className="bg-black/80 backdrop-blur-sm rounded-2xl shadow-xl border border-purple-900/30">
                 <LiveSummary
                   image={image}
                   imageName={imageName}
@@ -250,7 +250,7 @@ function App() {
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-violet-500 to-pink-600 rounded-full mx-auto"></div>
           </div>
           <div className="max-w-4xl mx-auto animate-fadeInUp">
-            <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 p-8">
+            <div className="bg-black/80 backdrop-blur-sm rounded-2xl shadow-xl border border-purple-900/30 p-8">
               <HistorySection
                 history={history}
                 onSelectGeneration={handleSelectGeneration}
