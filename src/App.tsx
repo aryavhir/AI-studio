@@ -6,6 +6,7 @@ import StyleSelector, { type StyleOption } from './components/StyleSelector';
 import LiveSummary from './components/LiveSummary';
 import GenerateSection from './components/GenerateSection';
 import HistorySection, { type Generation } from './components/HistorySection';
+import HeroSection from './components/HeroSection';
 
 const styleOptions: StyleOption[] = [
   {
@@ -122,6 +123,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900/40">
+      {/* Hero Section */}
+      <HeroSection />
+      
       {/* Header */}
       <header className="bg-black/80 backdrop-blur-md shadow-2xl border-b border-gray-800/30 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -145,7 +149,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main id="create-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-3 gap-8 animate-fadeInUp">
           {/* Left Column - Inputs */}
           <div className="space-y-6 animate-slideInLeft">
