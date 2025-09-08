@@ -7,18 +7,21 @@ interface PromptInputProps {
   maxLength?: number;
 }
 
-const PromptInput: React.FC<PromptInputProps> = ({ 
-  value, 
-  onChange, 
-  placeholder = "Describe what you want to create...",
-  maxLength = 500
+const PromptInput: React.FC<PromptInputProps> = ({
+  value,
+  onChange,
+  placeholder = 'Describe what you want to create...',
+  maxLength = 500,
 }) => {
   return (
     <div className="space-y-2">
-      <label htmlFor="prompt-input" className="block text-sm font-medium text-white">
+      <label
+        htmlFor="prompt-input"
+        className="block text-sm font-medium text-white"
+      >
         Prompt
       </label>
-      
+
       <div className="relative">
         <textarea
           id="prompt-input"
@@ -27,11 +30,11 @@ const PromptInput: React.FC<PromptInputProps> = ({
           placeholder={placeholder}
           maxLength={maxLength}
           rows={4}
-          className="w-full px-3 py-2 bg-gray-800/50 border border-gray-600/50 rounded-lg resize-none focus:ring-2 focus:ring-pink-400 focus:border-pink-400 text-gray-200 placeholder-gray-400 backdrop-blur-sm"
+          className="w-full px-3 py-2 bg-black border-none rounded-lg resize-none focus:outline-none focus:ring-0 focus:border-none text-gray-200 placeholder-gray-400"
           aria-describedby="prompt-counter"
         />
-        
-        <div 
+
+        <div
           id="prompt-counter"
           className="absolute bottom-2 right-2 text-xs text-gray-400 bg-gray-900/70 px-1 rounded"
           aria-live="polite"
@@ -39,7 +42,7 @@ const PromptInput: React.FC<PromptInputProps> = ({
           {value.length}/{maxLength}
         </div>
       </div>
-      
+
       {value.length > maxLength * 0.9 && (
         <p className="text-sm text-yellow-400">
           You're approaching the character limit

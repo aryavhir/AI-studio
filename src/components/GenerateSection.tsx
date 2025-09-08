@@ -47,12 +47,12 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
         type="button"
         onClick={isGenerating ? onAbort : onGenerate}
         disabled={!canGenerate && !isGenerating}
-        className={`w-full py-4 px-6 rounded-xl font-bold text-lg focus:outline-none transition-all duration-300 shadow-lg ${
+        className={`w-full py-4 px-6 rounded-xl font-bold text-lg focus:outline-none transition-all duration-300 ${
           isGenerating
-            ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-red-500/30 hover:shadow-red-500/50 hover:shadow-2xl transform hover:-translate-y-0.5'
+            ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white'
             : canGenerate
-            ? 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white shadow-pink-500/30 hover:shadow-pink-500/50 hover:shadow-2xl transform hover:-translate-y-0.5'
-            : 'bg-gray-700/50 text-gray-400 cursor-not-allowed shadow-gray-800/30'
+            ? 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white'
+            : 'bg-gray-700/50 text-gray-400 cursor-not-allowed'
         }`}
         aria-label={isGenerating ? 'Abort generation' : 'Start generation'}
       >

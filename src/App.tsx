@@ -154,7 +154,7 @@ function App() {
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mx-auto"></div>
           </div>
-          <div className="space-y-16 animate-fadeInUp max-w-4xl mx-auto">
+          <div className="space-y-16 animate-fadeInUp  mx-auto">
             {/* Create Tools */}
             <div className="space-y-12 animate-slideInLeft">
               <div
