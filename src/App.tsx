@@ -154,10 +154,13 @@ function App() {
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mx-auto"></div>
           </div>
-          <div className="grid lg:grid-cols-2 gap-16 animate-fadeInUp max-w-6xl mx-auto">
-            {/* Left Column - Create Tools */}
+          <div className="space-y-16 animate-fadeInUp max-w-4xl mx-auto">
+            {/* Create Tools */}
             <div className="space-y-12 animate-slideInLeft">
-              <div className="backdrop-blur-md rounded-2xl shadow-2xl p-8" style={{ backgroundColor: '#151515' }}>
+              <div
+                className="backdrop-blur-md rounded-2xl shadow-2xl p-8"
+                style={{ backgroundColor: '#151515' }}
+              >
                 <div className="flex items-center space-x-3 mb-8">
                   <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-2xl shadow-pink-400/40 group-hover:shadow-pink-400/60 transition-all duration-500">
                     <div className="w-full h-full flex items-center justify-center">
@@ -201,7 +204,10 @@ function App() {
                 </div>
               </div>
 
-              <div className="backdrop-blur-md rounded-2xl shadow-2xl p-8" style={{ backgroundColor: '#151515' }}>
+              <div
+                className="backdrop-blur-md rounded-2xl shadow-2xl p-8"
+                style={{ backgroundColor: '#151515' }}
+              >
                 <GenerateSection
                   onGenerate={handleGenerate}
                   onAbort={handleAbort}
@@ -212,9 +218,12 @@ function App() {
               </div>
             </div>
 
-            {/* Right Column - Live Preview */}
-            <div className="animate-slideInRight">
-              <div className="backdrop-blur-md rounded-2xl shadow-2xl" style={{ backgroundColor: '#151515' }}>
+            {/* Live Preview */}
+            <div className="animate-slideInUp">
+              <div
+                className="backdrop-blur-md rounded-2xl shadow-2xl"
+                style={{ backgroundColor: '#151515' }}
+              >
                 <LiveSummary
                   image={image}
                   imageName={imageName}
@@ -250,7 +259,10 @@ function App() {
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-violet-500 to-pink-600 rounded-full mx-auto"></div>
           </div>
           <div className="max-w-4xl mx-auto animate-fadeInUp">
-            <div className="backdrop-blur-md rounded-2xl shadow-2xl p-8" style={{ backgroundColor: '#151515' }}>
+            <div
+              className="backdrop-blur-md rounded-2xl shadow-2xl p-8"
+              style={{ backgroundColor: '#151515' }}
+            >
               <HistorySection
                 history={history}
                 onSelectGeneration={handleSelectGeneration}
@@ -277,9 +289,10 @@ function App() {
                 <p className="text-gray-400">Enterprise AI Platform</p>
               </div>
             </div>
-            
+
             <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
-              Professional-grade AI image generation for creators, designers, and enterprises worldwide.
+              Professional-grade AI image generation for creators, designers,
+              and enterprises worldwide.
             </p>
           </div>
 
