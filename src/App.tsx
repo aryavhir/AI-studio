@@ -126,37 +126,63 @@ function App() {
       {/* Hero Section */}
       <HeroSection />
       
-      {/* Header - Only shows after hero section */}
-      <header className="bg-black/90 backdrop-blur-md shadow-2xl border-b border-gray-800/30 sticky top-0 z-50">
+      {/* Header - Cinematic Style */}
+      <header className="bg-gradient-to-r from-black/95 via-gray-900/90 to-black/95 backdrop-blur-lg shadow-2xl border-b border-gradient-to-r from-pink-500/20 via-purple-500/20 to-pink-500/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-pink-500/30">
-                <span className="text-white font-bold text-sm">AI</span>
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-pink-500/40 animate-pulse-glow">
+                <span className="text-white font-bold text-lg">AI</span>
               </div>
-              <h1 className="text-2xl font-bold text-white">AI Studio <span className="text-sm text-pink-400 font-normal">Pro</span></h1>
+              <div>
+                <h1 className="text-3xl font-bold text-white tracking-tight">AI Studio <span className="text-lg text-pink-400 font-medium">Pro</span></h1>
+                <p className="text-xs text-gray-400 font-medium tracking-wider uppercase">Enterprise AI Platform</p>
+              </div>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-sm shadow-green-400/50"></div>
-              <div className="flex items-center space-x-3">
-                <p className="text-sm text-gray-300">Enterprise Ready</p>
-                <div className="w-1 h-4 bg-gray-600"></div>
-                <span className="text-xs text-gray-400 bg-gray-800/50 px-2 py-1 rounded">v2.1.0</span>
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+                <span className="text-sm text-green-300 font-medium">Live</span>
+              </div>
+              <div className="flex items-center space-x-4 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl px-4 py-2">
+                <span className="text-sm text-gray-300 font-medium">Enterprise Ready</span>
+                <div className="w-1 h-5 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full"></div>
+                <span className="text-xs text-gray-400 bg-gray-900/60 px-3 py-1 rounded-full font-mono">v2.1.0</span>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main id="create-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid lg:grid-cols-3 gap-8 animate-fadeInUp">
+      {/* Main Content - Enhanced Cinematic Style */}
+      <main id="create-section" className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fadeInUp">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Create <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Amazing</span> Content
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Professional AI-powered image generation with enterprise-grade tools and stunning results
+          </p>
+          <div className="mt-8 w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mx-auto"></div>
+        </div>
+        <div className="grid lg:grid-cols-3 gap-12 animate-fadeInUp">
           {/* Left Column - Inputs */}
-          <div className="space-y-6 animate-slideInLeft">
-            <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
-              <div className="flex items-center space-x-2 mb-6">
-                <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full shadow-lg shadow-pink-400/30"></div>
-                <h2 className="text-lg font-bold text-white">Create</h2>
+          <div className="space-y-8 animate-slideInLeft">
+            <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 p-8 hover:shadow-pink-500/30 hover:shadow-2xl transition-all duration-700 hover:border-pink-500/30 hover:scale-[1.02] group">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-2xl shadow-pink-400/40 group-hover:shadow-pink-400/60 transition-all duration-500">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"/>
+                      <path fillRule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd"/>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-white group-hover:text-pink-100 transition-colors duration-300">Create</h2>
+                  <p className="text-sm text-gray-400 font-medium">Design Your Vision</p>
+                </div>
               </div>
               
               <div className="space-y-6">
@@ -178,7 +204,7 @@ function App() {
               </div>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
+            <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 p-8 hover:shadow-purple-500/30 hover:shadow-2xl transition-all duration-700 hover:border-purple-500/30 hover:scale-[1.02] group">
               <GenerateSection
                 onGenerate={handleGenerate}
                 onAbort={handleAbort}
@@ -192,7 +218,7 @@ function App() {
           {/* Middle Column - Preview */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
-              <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
+              <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 hover:shadow-blue-500/30 hover:shadow-2xl transition-all duration-700 hover:border-blue-500/30 hover:scale-[1.02] group">
                 <LiveSummary
                   image={image}
                   imageName={imageName}
@@ -206,7 +232,7 @@ function App() {
 
           {/* Right Column - History */}
           <div className="lg:col-span-1 animate-slideInLeft animation-delay-300">
-            <div className="bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/30 p-6 sticky top-24 hover:shadow-pink-500/10 hover:shadow-2xl transition-all duration-300">
+            <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 p-8 sticky top-28 hover:shadow-violet-500/30 hover:shadow-2xl transition-all duration-700 hover:border-violet-500/30 hover:scale-[1.02] group">
               <HistorySection
                 history={history}
                 onSelectGeneration={handleSelectGeneration}
