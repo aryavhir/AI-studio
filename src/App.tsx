@@ -121,9 +121,9 @@ function App() {
   const canGenerate = (image || prompt.trim()) && style;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-800 via-violet-800 to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900/40">
       {/* Header */}
-      <header className="bg-gray-900/60 backdrop-blur-sm shadow-2xl border-b border-gray-800/50 sticky top-0 z-50">
+      <header className="bg-black/80 backdrop-blur-md shadow-2xl border-b border-gray-800/30 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
@@ -145,7 +145,7 @@ function App() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Inputs */}
           <div className="space-y-6">
-            <div className="bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/30 p-6 hover:shadow-pink-500/10 hover:shadow-2xl transition-all duration-300">
+            <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
               <div className="flex items-center space-x-2 mb-6">
                 <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full shadow-lg shadow-pink-400/30"></div>
                 <h2 className="text-lg font-bold text-white">Create</h2>
@@ -170,7 +170,7 @@ function App() {
               </div>
             </div>
 
-            <div className="bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/30 p-6 hover:shadow-pink-500/10 hover:shadow-2xl transition-all duration-300">
+            <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
               <GenerateSection
                 onGenerate={handleGenerate}
                 onAbort={handleAbort}
@@ -184,7 +184,7 @@ function App() {
           {/* Middle Column - Preview */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
-              <div className="bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/30 hover:shadow-pink-500/10 hover:shadow-2xl transition-all duration-300">
+              <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
                 <LiveSummary
                   image={image}
                   imageName={imageName}
@@ -210,7 +210,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 bg-gray-900/50 backdrop-blur-sm border-t border-gray-800/50">
+      <footer className="mt-16 bg-black/60 backdrop-blur-md border-t border-gray-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <p className="text-center text-sm text-gray-400 font-medium">
             AI Studio Demo - Modern Design
