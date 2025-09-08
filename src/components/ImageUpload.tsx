@@ -5,7 +5,7 @@ interface ImageUploadProps {
   currentImage: string | null;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }) => {
+const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ onImageChange, currentImage }) => {
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -205,6 +205,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
       )}
     </div>
   );
-};
+});
+
+// Add display name for debugging
+ImageUpload.displayName = 'ImageUpload';
 
 export default ImageUpload;

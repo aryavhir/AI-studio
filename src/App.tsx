@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import './App.css';
 import ImageUpload from './components/ImageUpload';
 import PromptInput from './components/PromptInput';
@@ -8,6 +8,7 @@ import GenerateSection from './components/GenerateSection';
 import HistorySection, { type Generation } from './components/HistorySection';
 import HeroSection from './components/HeroSection';
 import useScrollAnimation from './hooks/useScrollAnimation';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { RetryableApiService, type GenerateRequest, type GenerateResponse } from './services/mockApi';
 
 const styleOptions: StyleOption[] = [
@@ -84,7 +85,8 @@ function App() {
     setSelectedGenerationId(undefined); // Clear selection when changing style
   };
 
-  const handleGenerate = async () => {
+  // Memoize handlers to prevent unnecessary re-renders
+  const handleGenerate = useCallback(async () => {
     setIsGenerating(true);
     setGenerationError(null);
     setRetryAttempt(0);
@@ -131,14 +133,14 @@ function App() {
       setIsGenerating(false);
       setRetryAttempt(0);
     }
-  };
+  }, [image, prompt, style]);
 
-  const handleAbort = () => {
+  const handleAbort = useCallback(() => {
     apiServiceRef.current.abort();
     setIsGenerating(false);
     setGenerationError(null);
     setRetryAttempt(0);
-  };
+  }, []);
 
   const handleSelectGeneration = (generation: Generation) => {
     setSelectedGenerationId(generation.id);
@@ -152,6 +154,14 @@ function App() {
 
   // Determine if we can generate
   const canGenerate = (image || prompt.trim()) && style;
+
+  // Enable global keyboard shortcuts
+  const { shortcuts } = useKeyboardShortcuts({
+    onGenerate: handleGenerate,
+    onAbort: handleAbort,
+    isGenerating,
+    canGenerate: !!canGenerate
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900/40">
@@ -223,12 +233,17 @@ function App() {
                     currentImage={image}
                   />
 
-                  <PromptInput value={prompt} onChange={handlePromptChange} />
+                  <PromptInput 
+                    value={prompt} 
+                    onChange={handlePromptChange}
+                    onEnterKey={canGenerate ? handleGenerate : undefined}
+                  />
 
                   <StyleSelector
                     value={style}
                     onChange={handleStyleChange}
                     options={styleOptions}
+                    onEnterKey={canGenerate ? handleGenerate : undefined}
                   />
                 </div>
               </div>

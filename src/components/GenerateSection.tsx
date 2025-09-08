@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo, KeyboardEvent, useRef, useEffect } from 'react';
 
 interface GenerateSectionProps {
   onGenerate: () => void;
@@ -9,7 +9,7 @@ interface GenerateSectionProps {
   retryAttempt?: number;
 }
 
-const GenerateSection: React.FC<GenerateSectionProps> = ({
+const GenerateSection: React.FC<GenerateSectionProps> = React.memo(({
   onGenerate,
   onAbort,
   isGenerating,
@@ -17,6 +17,58 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
   canGenerate,
   retryAttempt = 0
 }) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Memoize button state to prevent unnecessary re-calculations
+  const buttonConfig = useMemo(() => {
+    if (isGenerating) {
+      return {
+        text: 'Abort Generation',
+        className: 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white',
+        ariaLabel: 'Abort generation',
+        action: onAbort,
+        disabled: false
+      };
+    } else if (canGenerate) {
+      return {
+        text: 'Generate',
+        className: 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white',
+        ariaLabel: 'Start generation',
+        action: onGenerate,
+        disabled: false
+      };
+    } else {
+      return {
+        text: 'Generate',
+        className: 'bg-gray-700/50 text-gray-400 cursor-not-allowed',
+        ariaLabel: 'Start generation (disabled)',
+        action: () => {},
+        disabled: true
+      };
+    }
+  }, [isGenerating, canGenerate, onGenerate, onAbort]);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'Escape' && isGenerating) {
+      e.preventDefault();
+      onAbort();
+    } else if (e.key === 'Enter' && canGenerate && !isGenerating) {
+      e.preventDefault();
+      onGenerate();
+    }
+  }, [isGenerating, canGenerate, onAbort, onGenerate]);
+
+  const handleClick = useCallback(() => {
+    buttonConfig.action();
+  }, [buttonConfig.action]);
+
+  // Auto-focus on generation completion for accessibility
+  useEffect(() => {
+    if (!isGenerating && buttonRef.current && document.activeElement === document.body) {
+      buttonRef.current.focus();
+    }
+  }, [isGenerating]);
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between mb-4">
@@ -28,7 +80,14 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
           </div>
           <div>
             <h3 className="text-2xl font-bold text-white group-hover:text-purple-100 transition-colors duration-300">Generate</h3>
-            <p className="text-sm text-gray-400 font-medium">Create Your Masterpiece</p>
+            <p className="text-sm text-gray-400 font-medium">
+              Create Your Masterpiece
+              {!isGenerating && (
+                <span className="text-xs text-gray-500 ml-2">
+                  (Enter to generate, Esc to abort)
+                </span>
+              )}
+            </p>
           </div>
         </div>
         
@@ -48,17 +107,14 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
 
       {/* Generate Button */}
       <button
+        ref={buttonRef}
         type="button"
-        onClick={isGenerating ? onAbort : onGenerate}
-        disabled={!canGenerate && !isGenerating}
-        className={`w-full py-4 px-6 rounded-xl font-bold text-lg focus:outline-none transition-all duration-300 ${
-          isGenerating
-            ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white'
-            : canGenerate
-            ? 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white'
-            : 'bg-gray-700/50 text-gray-400 cursor-not-allowed'
-        }`}
-        aria-label={isGenerating ? 'Abort generation' : 'Start generation'}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        disabled={buttonConfig.disabled}
+        tabIndex={3}
+        className={`w-full py-4 px-6 rounded-xl font-bold text-lg focus:outline-none focus:ring-2 focus:ring-pink-400/50 transition-all duration-300 ${buttonConfig.className}`}
+        aria-label={buttonConfig.ariaLabel}
       >
         {isGenerating ? (
           <span className="flex items-center justify-center space-x-2">
@@ -68,7 +124,7 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
             </svg>
           </span>
         ) : (
-          'Generate'
+          buttonConfig.text
         )}
       </button>
 
@@ -125,6 +181,9 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
       )}
     </div>
   );
-};
+});
+
+// Add display name for debugging
+GenerateSection.displayName = 'GenerateSection';
 
 export default GenerateSection;
