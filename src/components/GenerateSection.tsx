@@ -6,6 +6,7 @@ interface GenerateSectionProps {
   isGenerating: boolean;
   error: string | null;
   canGenerate: boolean;
+  retryAttempt?: number;
 }
 
 const GenerateSection: React.FC<GenerateSectionProps> = ({
@@ -13,7 +14,8 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
   onAbort,
   isGenerating,
   error,
-  canGenerate
+  canGenerate,
+  retryAttempt = 0
 }) => {
   return (
     <div className="space-y-4">
@@ -37,7 +39,9 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
               <div className="absolute inset-0 border-2 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
               <div className="absolute inset-1 border-2 border-purple-400/60 border-t-transparent rounded-full animate-spin animation-delay-150"></div>
             </div>
-            <span className="font-medium">Generating...</span>
+            <span className="font-medium">
+              {retryAttempt > 0 ? `Retrying (${retryAttempt}/3)...` : 'Generating...'}
+            </span>
           </div>
         )}
       </div>
@@ -99,7 +103,7 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
             ></div>
           </div>
           <p className="text-sm text-gray-300 text-center font-medium">
-            ✨ Creating your masterpiece...
+            {retryAttempt > 0 ? `🔄 Retrying (attempt ${retryAttempt}/3)...` : '✨ Creating your masterpiece...'}
           </p>
         </div>
       )}
