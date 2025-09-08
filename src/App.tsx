@@ -146,7 +146,9 @@ function App() {
         className="relative min-h-screen flex items-center justify-center bg-black"
         ref={createSectionAnimation.ref}
       >
-        <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full transition-all duration-700 ${createSectionAnimation.className}`}>
+        <div
+          className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full transition-all duration-700 ${createSectionAnimation.className}`}
+        >
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -162,7 +164,7 @@ function App() {
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mx-auto"></div>
           </div>
-          <div className="space-y-16 max-w-4xl mx-auto">
+          <div className="space-y-16 animate-fadeInUp  mx-auto">
             {/* Create Tools */}
             <div className="space-y-12">
               <div
@@ -252,11 +254,10 @@ function App() {
       <section
         id="history-section"
         className="relative min-h-screen flex items-center justify-center bg-black"
-        ref={historySectionAnimation.ref}
       >
-        <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full transition-all duration-700 ${historySectionAnimation.className}`}>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fadeInUp">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Your{' '}
               <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
@@ -270,7 +271,7 @@ function App() {
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-violet-500 to-pink-600 rounded-full mx-auto"></div>
           </div>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto animate-fadeInUp">
             <div
               className="backdrop-blur-md rounded-2xl shadow-2xl p-8"
               style={{ backgroundColor: '#151515' }}
@@ -286,7 +287,10 @@ function App() {
       </section>
 
       {/* Footer - Cinematic Style */}
-      <footer className="relative bg-cover bg-center bg-no-repeat border-t border-gray-700/30" style={{ backgroundImage: 'url(/images.jpg)' }}>
+      <footer
+        className="relative bg-cover bg-center bg-no-repeat border-t border-gray-700/30"
+        style={{ backgroundImage: 'url(/images.jpg)' }}
+      >
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Footer Content */}

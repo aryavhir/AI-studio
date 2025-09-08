@@ -24,12 +24,12 @@ const StyleSelector: React.FC<StyleSelectorProps> = ({ value, onChange, options 
           id="style-select"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full px-4 py-3 bg-black border-none rounded-lg focus:outline-none focus:ring-0 focus:border-none text-gray-200 appearance-none cursor-pointer transition-all duration-300 hover:bg-gray-900/80 group-hover:shadow-lg group-hover:shadow-pink-500/20"
+          className="w-full px-4 py-3 bg-black border-none rounded-lg focus:outline-none focus:ring-0 focus:border-none text-white appearance-none cursor-pointer transition-all duration-300 hover:bg-gray-900/80 group-hover:shadow-lg group-hover:shadow-pink-500/20"
           aria-describedby="style-description"
         >
           <option value="">Choose a style...</option>
           {options.map((option) => (
-            <option key={option.id} value={option.id} className="bg-black text-gray-200 py-2">
+            <option key={option.id} value={option.id} className="bg-black text-white py-2">
               {option.name}
             </option>
           ))}
