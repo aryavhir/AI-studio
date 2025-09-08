@@ -43,13 +43,23 @@ export class MockApiService {
     // Create new AbortController for this request
     this.abortController = new AbortController();
     
+    // Log the simulated API call
+    console.log('🚀 Mock API Call:', {
+      method: 'POST',
+      url: '/api/generate',
+      payload: request,
+      timestamp: new Date().toISOString()
+    });
+    
     return new Promise((resolve, reject) => {
       // Random delay between 1-2 seconds
       const delay = Math.random() * 1000 + 1000;
+      console.log(`⏳ Simulated API delay: ${Math.round(delay)}ms`);
       
       const timeoutId = setTimeout(() => {
         // 20% chance of error
         if (Math.random() < 0.2) {
+          console.log('❌ Mock API Error Response:', { error: 'Model overloaded' });
           reject(new Error('Model overloaded'));
           return;
         }
@@ -63,11 +73,13 @@ export class MockApiService {
           createdAt: new Date().toISOString()
         };
 
+        console.log('✅ Mock API Success Response:', response);
         resolve(response);
       }, delay);
 
       // Handle abort
       this.abortController?.signal.addEventListener('abort', () => {
+        console.log('🛑 Mock API Request Aborted');
         clearTimeout(timeoutId);
         reject(new Error('Request aborted'));
       });
@@ -131,6 +143,8 @@ export class RetryableApiService {
 
         // Calculate exponential backoff delay
         const retryDelay = this.baseDelay * Math.pow(2, attempt - 1);
+        
+        console.log(`🔄 Retrying API call (${attempt}/${this.maxRetries}) after ${retryDelay}ms delay. Error: ${lastError.message}`);
         
         // Notify about retry
         if (onRetry) {
