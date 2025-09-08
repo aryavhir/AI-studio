@@ -121,13 +121,21 @@ function App() {
   const canGenerate = (image || prompt.trim()) && style;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white/80 backdrop-blur-sm shadow-lg border-b border-white/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <h1 className="text-2xl font-bold text-gray-900">AI Studio</h1>
-            <p className="text-sm text-gray-500">Create amazing content with AI</p>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">AI</span>
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">AI Studio</h1>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <p className="text-sm text-gray-600">Create amazing content with AI</p>
+            </div>
           </div>
         </div>
       </header>
@@ -137,8 +145,11 @@ function App() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Inputs */}
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-6">Create</h2>
+            <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 hover:shadow-2xl transition-all duration-300">
+              <div className="flex items-center space-x-2 mb-6">
+                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Create</h2>
+              </div>
               
               <div className="space-y-6">
                 <ImageUpload
@@ -159,7 +170,7 @@ function App() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-gradient-to-br from-white/80 to-blue-50/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 hover:shadow-2xl transition-all duration-300">
               <GenerateSection
                 onGenerate={handleGenerate}
                 onAbort={handleAbort}
@@ -172,20 +183,22 @@ function App() {
 
           {/* Middle Column - Preview */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8">
-              <LiveSummary
-                image={image}
-                imageName={imageName}
-                prompt={prompt}
-                style={style}
-                styleOptions={styleOptions}
-              />
+            <div className="sticky top-24">
+              <div className="bg-gradient-to-br from-white/80 to-purple-50/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300">
+                <LiveSummary
+                  image={image}
+                  imageName={imageName}
+                  prompt={prompt}
+                  style={style}
+                  styleOptions={styleOptions}
+                />
+              </div>
             </div>
           </div>
 
           {/* Right Column - History */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm p-6 sticky top-8">
+            <div className="bg-gradient-to-br from-white/80 to-pink-50/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sticky top-24 hover:shadow-2xl transition-all duration-300">
               <HistorySection
                 history={history}
                 onSelectGeneration={handleSelectGeneration}
@@ -197,9 +210,9 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 bg-white border-t">
+      <footer className="mt-16 bg-white/50 backdrop-blur-sm border-t border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-sm text-gray-500">
+          <p className="text-center text-sm bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent font-medium">
             AI Studio Demo - UI Implementation Complete
           </p>
         </div>

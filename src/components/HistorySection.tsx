@@ -22,15 +22,22 @@ const HistorySection: React.FC<HistorySectionProps> = ({
   if (history.length === 0) {
     return (
       <div className="space-y-4">
-        <h3 className="text-lg font-medium text-gray-900">Recent Generations</h3>
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-          <div className="mx-auto w-12 h-12 text-gray-400 mb-4">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="flex items-center space-x-2">
+          <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center">
+            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+            </svg>
+          </div>
+          <h3 className="text-lg font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">Recent Generations</h3>
+        </div>
+        <div className="bg-gradient-to-br from-gray-50 to-pink-50/30 border-2 border-dashed border-gray-200 rounded-2xl p-8 text-center">
+          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-pink-400 to-rose-400 rounded-2xl flex items-center justify-center mb-4">
+            <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <p className="text-gray-500">No generations yet</p>
-          <p className="text-sm text-gray-400 mt-1">Your recent creations will appear here</p>
+          <p className="text-gray-600 font-medium">No generations yet</p>
+          <p className="text-sm text-gray-400 mt-2">Your amazing creations will appear here</p>
         </div>
       </div>
     );
@@ -54,8 +61,15 @@ const HistorySection: React.FC<HistorySectionProps> = ({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-medium text-gray-900">Recent Generations</h3>
-        <span className="text-sm text-gray-500">{history.length}/5</span>
+        <div className="flex items-center space-x-2">
+          <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center">
+            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+            </svg>
+          </div>
+          <h3 className="text-lg font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">Recent Generations</h3>
+        </div>
+        <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-full">{history.length}/5</span>
       </div>
 
       <div className="grid gap-4">
@@ -63,10 +77,10 @@ const HistorySection: React.FC<HistorySectionProps> = ({
           <button
             key={generation.id}
             onClick={() => onSelectGeneration(generation)}
-            className={`text-left p-4 rounded-lg border transition-all focus:outline-none ${
+            className={`text-left p-4 rounded-xl border transition-all focus:outline-none shadow-sm hover:shadow-md ${
               selectedId === generation.id
-                ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-500 ring-opacity-20'
-                : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                ? 'border-pink-300 bg-gradient-to-r from-pink-50 to-rose-50 ring-2 ring-pink-200 shadow-lg'
+                : 'border-gray-200 hover:border-pink-200 hover:bg-gradient-to-r hover:from-gray-50 hover:to-pink-50/30'
             }`}
             aria-label={`View generation: ${generation.prompt.slice(0, 50)}...`}
           >
