@@ -1,2 +1,17 @@
-main {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+  }
+  
+  .button-primary {
+    @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus-visible transition-colors;
+  }
+  
+  .button-secondary {
+    @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 focus-visible transition-colors;
+  }
 }
