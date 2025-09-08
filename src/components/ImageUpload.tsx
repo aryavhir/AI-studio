@@ -146,7 +146,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
               <p className="text-gray-600">
                 <button
                   type="button"
-                  className="font-medium text-blue-600 hover:text-blue-500 focus-visible"
+                  className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isProcessing}
                 >
@@ -180,7 +180,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
             <button
               type="button"
               onClick={handleRemoveImage}
-              className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 focus-visible"
+              className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               aria-label="Remove image"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -33,11 +33,11 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
         type="button"
         onClick={isGenerating ? onAbort : onGenerate}
         disabled={!canGenerate && !isGenerating}
-        className={`w-full py-3 px-4 rounded-lg font-medium focus-visible transition-all ${
+        className={`w-full py-3 px-4 rounded-lg font-medium focus:outline-none transition-all ${
           isGenerating
             ? 'bg-red-600 hover:bg-red-700 text-white'
             : canGenerate
-            ? 'button-primary'
+            ? 'bg-blue-600 hover:bg-blue-700 text-white'
             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
         }`}
         aria-label={isGenerating ? 'Abort generation' : 'Start generation'}

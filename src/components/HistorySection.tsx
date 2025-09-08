@@ -63,7 +63,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
           <button
             key={generation.id}
             onClick={() => onSelectGeneration(generation)}
-            className={`text-left p-4 rounded-lg border transition-all focus-visible ${
+            className={`text-left p-4 rounded-lg border transition-all focus:outline-none ${
               selectedId === generation.id
                 ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-500 ring-opacity-20'
                 : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
