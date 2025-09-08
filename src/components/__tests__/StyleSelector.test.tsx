@@ -45,7 +45,7 @@ describe('StyleSelector Component Tests', () => {
   test('shows style description when selected', () => {
     render(
       <div>
-        <select data-testid="style-selector" value="editorial" readOnly>
+        <select data-testid="style-selector" value="editorial" onChange={() => {}}>
           <option value="editorial">Editorial</option>
         </select>
         <p data-testid="style-description">Clean, professional photography style</p>
