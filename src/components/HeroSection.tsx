@@ -1,8 +1,19 @@
+import React, { useState, useCallback } from 'react';
+
 interface HeroSectionProps {
   className?: string;
 }
 
 export const HeroSection = ({ className = '' }: HeroSectionProps) => {
+  const [showVideoModal, setShowVideoModal] = useState(false);
+
+  const openVideoModal = useCallback(() => {
+    setShowVideoModal(true);
+  }, []);
+
+  const closeVideoModal = useCallback(() => {
+    setShowVideoModal(false);
+  }, []);
   return (
     <section className={`relative h-screen w-full overflow-hidden ${className}`}>
       {/* Video Background */}
@@ -60,7 +71,10 @@ export const HeroSection = ({ className = '' }: HeroSectionProps) => {
               >
                 Start Creating Now
               </button>
-              <button className="border-2 border-gray-400 hover:border-white text-gray-300 hover:text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 backdrop-blur-sm bg-white/5 hover:bg-white/10 text-lg">
+              <button 
+                className="border-2 border-gray-400 hover:border-white text-gray-300 hover:text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 backdrop-blur-sm bg-white/5 hover:bg-white/10 text-lg"
+                onClick={openVideoModal}
+              >
                 Watch Demo
               </button>
             </div>
@@ -93,6 +107,50 @@ export const HeroSection = ({ className = '' }: HeroSectionProps) => {
           <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {showVideoModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+          <div className="relative w-full h-full max-w-6xl max-h-screen p-4 md:p-8">
+            {/* Close Button */}
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 z-60 bg-gray-900/80 hover:bg-gray-800 text-white rounded-full p-3 transition-all duration-300 backdrop-blur-sm border border-gray-700"
+              aria-label="Close video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Video Player */}
+            <div className="w-full h-full flex items-center justify-center">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full object-contain rounded-lg shadow-2xl"
+                style={{ maxHeight: 'calc(100vh - 6rem)' }}
+              >
+                <source src="/Screen Recording 2025-09-08 164754.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            
+            {/* Video Title */}
+            <div className="absolute bottom-4 left-4 right-4 text-center">
+              <h3 className="text-white text-xl font-bold bg-black/50 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+                AI Studio Pro Demo
+              </h3>
+            </div>
+          </div>
+          
+          {/* Click outside to close */}
+          <div 
+            className="absolute inset-0 z-40" 
+            onClick={closeVideoModal}
+          ></div>
+        </div>
+      )}
     </section>
   );
 };
