@@ -130,11 +130,15 @@ function App() {
               <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-pink-500/30">
                 <span className="text-white font-bold text-sm">AI</span>
               </div>
-              <h1 className="text-2xl font-bold text-white">AI Studio</h1>
+              <h1 className="text-2xl font-bold text-white">AI Studio <span className="text-sm text-pink-400 font-normal">Pro</span></h1>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-sm shadow-green-400/50"></div>
-              <p className="text-sm text-gray-300">Create amazing content with AI</p>
+              <div className="flex items-center space-x-3">
+                <p className="text-sm text-gray-300">Enterprise Ready</p>
+                <div className="w-1 h-4 bg-gray-600"></div>
+                <span className="text-xs text-gray-400 bg-gray-800/50 px-2 py-1 rounded">v2.1.0</span>
+              </div>
             </div>
           </div>
         </div>
@@ -142,9 +146,9 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 animate-fadeInUp">
           {/* Left Column - Inputs */}
-          <div className="space-y-6">
+          <div className="space-y-6 animate-slideInLeft">
             <div className="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700/40 p-6 hover:shadow-pink-500/20 hover:shadow-2xl transition-all duration-500 hover:border-gray-600/60">
               <div className="flex items-center space-x-2 mb-6">
                 <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full shadow-lg shadow-pink-400/30"></div>
@@ -197,7 +201,7 @@ function App() {
           </div>
 
           {/* Right Column - History */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 animate-slideInLeft animation-delay-300">
             <div className="bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/30 p-6 sticky top-24 hover:shadow-pink-500/10 hover:shadow-2xl transition-all duration-300">
               <HistorySection
                 history={history}
@@ -212,9 +216,16 @@ function App() {
       {/* Footer */}
       <footer className="mt-16 bg-black/60 backdrop-blur-md border-t border-gray-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-sm text-gray-400 font-medium">
-            AI Studio Demo - Modern Design
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-500">© 2024 AI Studio Pro - Enterprise AI Generation Platform</p>
+            <div className="flex items-center space-x-4">
+              <span className="text-xs text-gray-600">v2.1.0</span>
+              <div className="flex items-center space-x-1">
+                <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs text-gray-600">All systems operational</span>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

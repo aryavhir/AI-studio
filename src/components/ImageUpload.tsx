@@ -163,7 +163,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
           {isProcessing && (
             <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center rounded-lg backdrop-blur-sm">
               <div className="flex items-center space-x-2">
-                <div className="w-5 h-5 border-2 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-6 h-6 relative">
+                  <div className="absolute inset-0 border-2 border-gray-600/30 rounded-full"></div>
+                  <div className="absolute inset-0 border-2 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="absolute inset-1 border-2 border-purple-400/60 border-t-transparent rounded-full animate-spin animation-delay-150"></div>
+                </div>
                 <span className="text-sm text-gray-200">Processing...</span>
               </div>
             </div>

@@ -29,7 +29,11 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
         
         {isGenerating && (
           <div className="flex items-center space-x-2 text-sm text-gray-300 bg-gray-800/70 px-3 py-1 rounded-full border border-gray-600/50">
-            <div className="w-4 h-4 border-2 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-5 h-5 relative">
+              <div className="absolute inset-0 border-2 border-gray-600/30 rounded-full"></div>
+              <div className="absolute inset-0 border-2 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+              <div className="absolute inset-1 border-2 border-purple-400/60 border-t-transparent rounded-full animate-spin animation-delay-150"></div>
+            </div>
             <span className="font-medium">Generating...</span>
           </div>
         )}
@@ -82,7 +86,14 @@ const GenerateSection: React.FC<GenerateSectionProps> = ({
       {isGenerating && (
         <div className="space-y-3 bg-gray-800/50 p-4 rounded-xl border border-gray-600/30 backdrop-blur-sm">
           <div className="bg-gray-700 rounded-full h-3 overflow-hidden shadow-inner">
-            <div className="bg-gradient-to-r from-pink-400 to-purple-500 h-3 rounded-full animate-pulse w-3/4 shadow-lg"></div>
+            <div 
+              className="bg-gradient-to-r from-pink-400 via-purple-500 to-pink-400 h-3 rounded-full shadow-lg transition-all duration-300"
+              style={{
+                width: '75%',
+                backgroundSize: '200% 100%',
+                animation: 'shimmer 2s ease-in-out infinite, pulse 2s ease-in-out infinite'
+              }}
+            ></div>
           </div>
           <p className="text-sm text-gray-300 text-center font-medium">
             ✨ Creating your masterpiece...

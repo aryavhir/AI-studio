@@ -6,13 +6,16 @@ interface SkeletonProps {
 
 export const SkeletonLoader = ({ className = '', width = 'w-full', height = 'h-4' }: SkeletonProps) => {
   return (
-    <div 
-      className={`${width} ${height} bg-gradient-to-r from-gray-800/50 via-gray-700/30 to-gray-800/50 rounded animate-pulse ${className}`}
-      style={{
-        backgroundSize: '200% 100%',
-        animation: 'shimmer 2s ease-in-out infinite'
-      }}
-    />
+    <div className={`${width} ${height} rounded overflow-hidden relative ${className}`}>
+      <div className="absolute inset-0 bg-gray-800/50" />
+      <div 
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-600/30 to-transparent animate-pulse"
+        style={{
+          backgroundSize: '200% 100%',
+          animation: 'shimmer 2s ease-in-out infinite'
+        }}
+      />
+    </div>
   );
 };
 
