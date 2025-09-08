@@ -110,7 +110,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
 
   return (
     <div className="space-y-4">
-      <label className="block text-sm font-medium text-purple-200">
+      <label className="block text-sm font-medium text-white">
         Upload Image
       </label>
       
@@ -118,8 +118,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
         <div
           className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
             dragActive 
-              ? 'border-blue-400 bg-blue-900/30' 
-              : 'border-gray-600 hover:border-gray-500'
+              ? 'border-pink-400 bg-gray-800/50' 
+              : 'border-gray-600/50 hover:border-gray-500'
           }`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
@@ -146,7 +146,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
               <p className="text-gray-300">
                 <button
                   type="button"
-                  className="font-medium text-blue-400 hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="font-medium text-pink-400 hover:text-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isProcessing}
                 >
@@ -163,7 +163,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
           {isProcessing && (
             <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center rounded-lg backdrop-blur-sm">
               <div className="flex items-center space-x-2">
-                <div className="w-5 h-5 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-5 h-5 border-2 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
                 <span className="text-sm text-gray-200">Processing...</span>
               </div>
             </div>
