@@ -110,7 +110,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
 
   return (
     <div className="space-y-4">
-      <label className="block text-sm font-medium text-gray-700">
+      <label className="block text-sm font-medium text-gray-300">
         Upload Image
       </label>
       
@@ -118,8 +118,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
         <div
           className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
             dragActive 
-              ? 'border-blue-500 bg-blue-50' 
-              : 'border-gray-300 hover:border-gray-400'
+              ? 'border-blue-400 bg-blue-900/30' 
+              : 'border-gray-600 hover:border-gray-500'
           }`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
@@ -143,10 +143,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
             </div>
             
             <div>
-              <p className="text-gray-600">
+              <p className="text-gray-300">
                 <button
                   type="button"
-                  className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="font-medium text-blue-400 hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isProcessing}
                 >
@@ -154,17 +154,17 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
                 </button>
                 {' '}or drag and drop
               </p>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-400 mt-1">
                 PNG or JPG up to 10MB
               </p>
             </div>
           </div>
           
           {isProcessing && (
-            <div className="absolute inset-0 bg-white/80 flex items-center justify-center rounded-lg">
+            <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center rounded-lg backdrop-blur-sm">
               <div className="flex items-center space-x-2">
-                <div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                <span className="text-sm text-gray-600">Processing...</span>
+                <div className="w-5 h-5 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                <span className="text-sm text-gray-200">Processing...</span>
               </div>
             </div>
           )}
@@ -175,12 +175,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
             <img
               src={currentImage}
               alt="Uploaded preview"
-              className="w-full h-64 object-cover rounded-lg border"
+              className="w-full h-64 object-cover rounded-lg border border-gray-600/50 shadow-lg"
             />
             <button
               type="button"
               onClick={handleRemoveImage}
-              className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 shadow-lg"
               aria-label="Remove image"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -188,15 +188,15 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
               </svg>
             </button>
           </div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-300">
             Image uploaded successfully. Click the × to remove.
           </p>
         </div>
       )}
 
       {error && (
-        <div className="p-3 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-sm text-red-600">{error}</p>
+        <div className="p-3 bg-red-900/30 border border-red-500/50 rounded-lg backdrop-blur-sm">
+          <p className="text-sm text-red-300">{error}</p>
         </div>
       )}
     </div>

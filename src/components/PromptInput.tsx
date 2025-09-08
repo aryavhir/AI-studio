@@ -15,7 +15,7 @@ const PromptInput: React.FC<PromptInputProps> = ({
 }) => {
   return (
     <div className="space-y-2">
-      <label htmlFor="prompt-input" className="block text-sm font-medium text-gray-700">
+      <label htmlFor="prompt-input" className="block text-sm font-medium text-gray-300">
         Prompt
       </label>
       
@@ -27,13 +27,13 @@ const PromptInput: React.FC<PromptInputProps> = ({
           placeholder={placeholder}
           maxLength={maxLength}
           rows={4}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
+          className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-lg resize-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-gray-200 placeholder-gray-400 backdrop-blur-sm"
           aria-describedby="prompt-counter"
         />
         
         <div 
           id="prompt-counter"
-          className="absolute bottom-2 right-2 text-xs text-gray-400"
+          className="absolute bottom-2 right-2 text-xs text-gray-400 bg-gray-800/70 px-1 rounded"
           aria-live="polite"
         >
           {value.length}/{maxLength}
@@ -41,7 +41,7 @@ const PromptInput: React.FC<PromptInputProps> = ({
       </div>
       
       {value.length > maxLength * 0.9 && (
-        <p className="text-sm text-yellow-600">
+        <p className="text-sm text-yellow-400">
           You're approaching the character limit
         </p>
       )}
