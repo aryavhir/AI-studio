@@ -110,7 +110,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
 
   return (
     <div className="space-y-4">
-      <label className="block text-sm font-medium text-gray-300">
+      <label className="block text-sm font-medium text-purple-200">
         Upload Image
       </label>
       
@@ -175,7 +175,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
             <img
               src={currentImage}
               alt="Uploaded preview"
-              className="w-full h-64 object-cover rounded-lg border border-gray-600/50 shadow-lg"
+              className="w-full h-64 object-cover rounded-lg border border-purple-600/30 shadow-lg shadow-purple-500/10"
             />
             <button
               type="button"
@@ -188,14 +188,14 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange, currentImage }
               </svg>
             </button>
           </div>
-          <p className="text-sm text-gray-300">
+          <p className="text-sm text-purple-200">
             Image uploaded successfully. Click the × to remove.
           </p>
         </div>
       )}
 
       {error && (
-        <div className="p-3 bg-red-900/30 border border-red-500/50 rounded-lg backdrop-blur-sm">
+        <div className="p-3 bg-red-900/30 border border-red-500/50 rounded-xl backdrop-blur-sm">
           <p className="text-sm text-red-300">{error}</p>
         </div>
       )}
