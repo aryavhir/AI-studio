@@ -13,7 +13,7 @@ describe('GenerateSection Component Tests', () => {
     )
     
     expect(screen.getByTestId('generate-button')).toBeInTheDocument()
-    expect(screen.getByText('Generate')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Generate' })).toBeInTheDocument()
     expect(screen.getByText('Create Your Masterpiece')).toBeInTheDocument()
   })
 
