@@ -1,6 +1,6 @@
 # Overview
 
-This is an enterprise-grade React-based AI image generation platform built with TypeScript and Vite. AI Studio Pro allows users to upload images, enter prompts, select artistic styles, and generate AI-powered image creations. It features a sophisticated, professional interface with a black-to-purple gradient background, enterprise branding, lazy loading experiences, and premium micro-interactions that rival production applications from professional development companies.
+This is an enterprise-grade React-based AI image generation platform built with TypeScript and Vite. AI Studio Pro allows users to upload images, enter prompts, select artistic styles, and generate AI-powered image creations. It features a cinematic hero section with video background, sophisticated professional interface with black-to-purple gradient background, enterprise branding, lazy loading experiences, and premium micro-interactions that rival production applications from professional development companies.
 
 # User Preferences
 
