@@ -1,11 +1,11 @@
 # Overview
 
-This is a React-based image generation application built with TypeScript and Vite. The app allows users to upload images, enter prompts, select artistic styles, and generate AI-powered image creations. It features a sleek, professional dark theme interface built with Tailwind CSS and includes functionality for managing generation history and live previews of user inputs.
+This is a React-based image generation application built with TypeScript and Vite. The app allows users to upload images, enter prompts, select artistic styles, and generate AI-powered image creations. It features a stunning purple/violet themed interface built with Tailwind CSS that matches modern AI tool aesthetics, with deep gradient backgrounds and sophisticated glassmorphism effects.
 
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
-Design preference: Modern dark theme with professional styling and visual appeal over bland designs.
+Design preference: Modern purple/violet theme with professional styling inspired by contemporary AI application designs.
 
 # System Architecture
 
@@ -25,7 +25,7 @@ Design preference: Modern dark theme with professional styling and visual appeal
 
 **State Management**: Local React state using hooks. No external state management library needed due to the focused scope of the application.
 
-**Styling**: Modern dark theme built with Tailwind CSS featuring professional gradients, glassmorphism effects, and colored accent themes. PostCSS configured for processing. Includes Tailwind Forms plugin for enhanced form styling. Dark background gradients from gray-900 to black with semi-transparent cards using backdrop blur effects.
+**Styling**: Modern purple/violet themed design built with Tailwind CSS featuring deep gradient backgrounds from purple-900 through violet-900 to indigo-900. Professional glassmorphism cards with purple-800/violet-900 backgrounds, sophisticated backdrop blur effects, and violet/purple accent colors throughout. Enhanced shadows with colored glows and smooth hover transitions create a premium AI application aesthetic.
 
 **Code Quality**: ESLint with TypeScript rules for code consistency and error prevention. Prettier for code formatting.
 
