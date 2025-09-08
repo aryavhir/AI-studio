@@ -7,6 +7,7 @@ import LiveSummary from './components/LiveSummary';
 import GenerateSection from './components/GenerateSection';
 import HistorySection, { type Generation } from './components/HistorySection';
 import HeroSection from './components/HeroSection';
+import useScrollAnimation from './hooks/useScrollAnimation';
 
 const styleOptions: StyleOption[] = [
   {
@@ -40,6 +41,12 @@ const styleOptions: StyleOption[] = [
 ];
 
 function App() {
+  // Scroll animation hooks for different sections
+  const createSectionAnimation = useScrollAnimation({ threshold: 0.1 });
+  const historySectionAnimation = useScrollAnimation({ threshold: 0.1 });
+  const imageUploadAnimation = useScrollAnimation({ threshold: 0.2 });
+  const generateSectionAnimation = useScrollAnimation({ threshold: 0.2 });
+  const liveSummaryAnimation = useScrollAnimation({ threshold: 0.2 });
   // Form state
   const [image, setImage] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string | null>(null);
@@ -137,10 +144,11 @@ function App() {
       <section
         id="create-section"
         className="relative min-h-screen flex items-center justify-center bg-black"
+        ref={createSectionAnimation.ref}
       >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full transition-all duration-700 ${createSectionAnimation.className}`}>
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fadeInUp">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Create{' '}
               <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
@@ -154,11 +162,12 @@ function App() {
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mx-auto"></div>
           </div>
-          <div className="space-y-16 animate-fadeInUp  mx-auto">
+          <div className="space-y-16 max-w-4xl mx-auto">
             {/* Create Tools */}
-            <div className="space-y-12 animate-slideInLeft">
+            <div className="space-y-12">
               <div
-                className="backdrop-blur-md rounded-2xl shadow-2xl p-8"
+                ref={imageUploadAnimation.ref}
+                className={`backdrop-blur-md rounded-2xl shadow-2xl p-8 transition-all duration-700 ${imageUploadAnimation.className}`}
                 style={{ backgroundColor: '#151515' }}
               >
                 <div className="flex items-center space-x-3 mb-8">
@@ -205,7 +214,8 @@ function App() {
               </div>
 
               <div
-                className="backdrop-blur-md rounded-2xl shadow-2xl p-8"
+                ref={generateSectionAnimation.ref}
+                className={`backdrop-blur-md rounded-2xl shadow-2xl p-8 transition-all duration-700 ${generateSectionAnimation.className}`}
                 style={{ backgroundColor: '#151515' }}
               >
                 <GenerateSection
@@ -219,9 +229,10 @@ function App() {
             </div>
 
             {/* Live Preview */}
-            <div className="animate-slideInUp">
+            <div className="transition-all duration-700">
               <div
-                className="backdrop-blur-md rounded-2xl shadow-2xl"
+                ref={liveSummaryAnimation.ref}
+                className={`backdrop-blur-md rounded-2xl shadow-2xl transition-all duration-700 ${liveSummaryAnimation.className}`}
                 style={{ backgroundColor: '#151515' }}
               >
                 <LiveSummary
@@ -241,10 +252,11 @@ function App() {
       <section
         id="history-section"
         className="relative min-h-screen flex items-center justify-center bg-black"
+        ref={historySectionAnimation.ref}
       >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full transition-all duration-700 ${historySectionAnimation.className}`}>
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fadeInUp">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Your{' '}
               <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
@@ -258,7 +270,7 @@ function App() {
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-violet-500 to-pink-600 rounded-full mx-auto"></div>
           </div>
-          <div className="max-w-4xl mx-auto animate-fadeInUp">
+          <div className="max-w-4xl mx-auto">
             <div
               className="backdrop-blur-md rounded-2xl shadow-2xl p-8"
               style={{ backgroundColor: '#151515' }}

@@ -29,6 +29,17 @@
   }
 }
 
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes pulse-glow {
   0%, 100% {
     box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
@@ -44,6 +55,10 @@
 
 .animate-slideInLeft {
   animation: slideInLeft 0.5s ease-out;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.8s ease-out forwards;
 }
 
 .animate-pulse-glow {
