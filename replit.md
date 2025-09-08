@@ -1,11 +1,11 @@
 # Overview
 
-This is a React-based image generation application built with TypeScript and Vite. The app allows users to upload images, enter prompts, select artistic styles, and generate AI-powered image creations. It features a stunning purple/violet themed interface built with Tailwind CSS that matches modern AI tool aesthetics, with deep gradient backgrounds and sophisticated glassmorphism effects.
+This is a React-based image generation application built with TypeScript and Vite. The app allows users to upload images, enter prompts, select artistic styles, and generate AI-powered image creations. It features a modern, professional interface inspired by the CleverMate template design with deep purple-to-blue gradient backgrounds, clean white typography, and pink/magenta gradient accents.
 
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
-Design preference: Modern purple/violet theme with professional styling inspired by contemporary AI application designs.
+Design preference: CleverMate template-inspired design with deep purple-to-blue gradients, clean white text, and pink/magenta accent colors for a professional, modern aesthetic.
 
 # System Architecture
 
@@ -25,7 +25,7 @@ Design preference: Modern purple/violet theme with professional styling inspired
 
 **State Management**: Local React state using hooks. No external state management library needed due to the focused scope of the application.
 
-**Styling**: Modern purple/violet themed design built with Tailwind CSS featuring deep gradient backgrounds from purple-900 through violet-900 to indigo-900. Professional glassmorphism cards with purple-800/violet-900 backgrounds, sophisticated backdrop blur effects, and violet/purple accent colors throughout. Enhanced shadows with colored glows and smooth hover transitions create a premium AI application aesthetic.
+**Styling**: CleverMate template-inspired design built with Tailwind CSS featuring a deep purple-to-blue gradient background (from purple-800 via violet-800 to blue-900). Clean dark gray cards (gray-900/70) with subtle borders and backdrop blur effects. Clean white typography throughout with pink/magenta gradient buttons and accents (from pink-500 to purple-600) for interactive elements. Professional aesthetic with modern glassmorphism effects and smooth hover transitions.
 
 **Code Quality**: ESLint with TypeScript rules for code consistency and error prevention. Prettier for code formatting.
 
