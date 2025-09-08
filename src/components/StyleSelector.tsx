@@ -24,7 +24,7 @@ const StyleSelector: React.FC<StyleSelectorProps> = ({ value, onChange, options 
           id="style-select"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full px-4 py-3 border-none rounded-lg focus:outline-none focus:ring-0 focus:border-none text-white appearance-none cursor-pointer transition-all duration-300 hover:bg-gray-900/80"
+          className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-0 focus:border-gray-600 text-white appearance-none cursor-pointer transition-all duration-300 hover:bg-gray-900/80"
           style={{ backgroundColor: 'rgb(21, 21, 21)' }}
           aria-describedby="style-description"
         >
