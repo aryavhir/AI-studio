@@ -134,8 +134,8 @@ function App() {
       <HeroSection />
 
       {/* Create Section - Full Length */}
-      <section 
-        id="create-section" 
+      <section
+        id="create-section"
         className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-purple-900/20"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-transparent to-purple-500/5"></div>
@@ -150,12 +150,12 @@ function App() {
               Content
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Professional AI-powered image generation with enterprise-grade tools
-              and stunning results
+              Professional AI-powered image generation with enterprise-grade
+              tools and stunning results
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mx-auto"></div>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 animate-fadeInUp max-w-6xl mx-auto">
+          <div>
             {/* Left Column - Create Tools */}
             <div className="space-y-8 animate-slideInLeft">
               <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700/50 p-8 hover:shadow-pink-500/30 hover:shadow-2xl transition-all duration-700 hover:border-pink-500/30 hover:scale-[1.02] group">
@@ -230,11 +230,16 @@ function App() {
       </section>
 
       {/* History Section - Full Length */}
-      <section 
-        id="history-section" 
-        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900/20 via-gray-900 to-black"
+      <section
+        id="history-section"
+        className="relative min-h-screen flex items-center justify-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('/images.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-pink-500/5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           {/* Section Header */}
           <div className="text-center mb-16 animate-fadeInUp">
@@ -246,7 +251,8 @@ function App() {
               History
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Explore your AI-generated masterpieces and revisit your creative journey
+              Explore your AI-generated masterpieces and revisit your creative
+              journey
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-violet-500 to-pink-600 rounded-full mx-auto"></div>
           </div>
