@@ -157,7 +157,7 @@ function App() {
           <div className="grid lg:grid-cols-2 gap-16 animate-fadeInUp max-w-6xl mx-auto">
             {/* Left Column - Create Tools */}
             <div className="space-y-12 animate-slideInLeft">
-              <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/90 to-purple-950/95 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50 p-8">
+              <div className="bg-gradient-to-br from-gray-950/98 via-black/95 to-purple-950/98 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50 p-8">
                 <div className="flex items-center space-x-3 mb-8">
                   <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-2xl shadow-pink-400/40 group-hover:shadow-pink-400/60 transition-all duration-500">
                     <div className="w-full h-full flex items-center justify-center">
@@ -201,7 +201,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/90 to-purple-950/95 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50 p-8">
+              <div className="bg-gradient-to-br from-gray-950/98 via-black/95 to-purple-950/98 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50 p-8">
                 <GenerateSection
                   onGenerate={handleGenerate}
                   onAbort={handleAbort}
@@ -214,7 +214,7 @@ function App() {
 
             {/* Right Column - Live Preview */}
             <div className="animate-slideInRight">
-              <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/90 to-purple-950/95 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50">
+              <div className="bg-gradient-to-br from-gray-950/98 via-black/95 to-purple-950/98 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50">
                 <LiveSummary
                   image={image}
                   imageName={imageName}
@@ -250,7 +250,7 @@ function App() {
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-violet-500 to-pink-600 rounded-full mx-auto"></div>
           </div>
           <div className="max-w-4xl mx-auto animate-fadeInUp">
-            <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/90 to-purple-950/95 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50 p-8">
+            <div className="bg-gradient-to-br from-gray-950/98 via-black/95 to-purple-950/98 backdrop-blur-md rounded-2xl shadow-2xl border border-purple-700/50 p-8">
               <HistorySection
                 history={history}
                 onSelectGeneration={handleSelectGeneration}
@@ -266,71 +266,21 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-purple-900"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Footer Content */}
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
+          <div className="text-center space-y-8">
             {/* Brand Section */}
-            <div className="space-y-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-pink-500/40">
-                  <span className="text-white font-bold text-lg">AI</span>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">
-                    AI Studio Pro
-                  </h3>
-                  <p className="text-sm text-gray-400">
-                    Enterprise AI Platform
-                  </p>
-                </div>
+            <div className="flex justify-center items-center space-x-4 mb-8">
+              <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-pink-500/40">
+                <span className="text-white font-bold text-2xl">AI</span>
               </div>
-              <p className="text-gray-300 leading-relaxed">
-                Professional-grade AI image generation for creators, designers,
-                and enterprises worldwide.
-              </p>
-            </div>
-
-            {/* Status Section */}
-            <div className="space-y-6">
-              <h4 className="text-lg font-bold text-white">System Status</h4>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between bg-gray-800/50 rounded-xl p-4">
-                  <span className="text-gray-300 font-medium">
-                    Platform Status
-                  </span>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
-                    <span className="text-green-300 font-medium">
-                      Operational
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between bg-gray-800/50 rounded-xl p-4">
-                  <span className="text-gray-300 font-medium">
-                    API Response
-                  </span>
-                  <span className="text-blue-300 font-medium">&lt; 100ms</span>
-                </div>
+              <div>
+                <h3 className="text-3xl font-bold text-white">AI Studio Pro</h3>
+                <p className="text-gray-400">Enterprise AI Platform</p>
               </div>
             </div>
-
-            {/* Version Info */}
-            <div className="space-y-6">
-              <h4 className="text-lg font-bold text-white">Version Info</h4>
-              <div className="space-y-4">
-                <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-300 font-medium">
-                      Current Version
-                    </span>
-                    <span className="text-pink-300 font-mono font-bold">
-                      v2.1.0
-                    </span>
-                  </div>
-                  <div className="text-xs text-gray-400">
-                    Latest stable release with enhanced performance
-                  </div>
-                </div>
-              </div>
-            </div>
+            
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+              Professional-grade AI image generation for creators, designers, and enterprises worldwide.
+            </p>
           </div>
 
           {/* Bottom Bar */}
